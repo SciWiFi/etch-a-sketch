@@ -1,17 +1,36 @@
 var container = document.querySelector("#grid-wrapper");
-for(var i = 0; i < 256; i++) {
-    var item = document.createElement("div");
-    item.className = "grid-item";
-    item.id = "grid-item" + i;
-    container.appendChild(item);
+var gridSize = 16;
+
+function initializeGrid() {
+    container.innerHTML = "";
+    container.style.setProperty("grid-template-columns", `repeat(${gridSize}, 1fr)`);
+    container.style.setProperty("grid-template-rows", `repeat(${gridSize}, 1fr`);
+    for(var i = 0; i < gridSize * gridSize; i++) {
+        var item = document.createElement("div");
+        item.className = "grid-item";
+        item.id = "grid-item" + i;
+        item.style.width = 320 / gridSize;
+        item.style.height = 320 / gridSize;
+        container.appendChild(item);
+    }
+    container.style.gr
+    const items = document.querySelectorAll(".grid-item");
+        console.log(items);
+        for(var i = 0; i < items.length; i++) {
+            items[i].style.width = 320 / gridSize;
+            items[i].style.height = 320 / gridSize;
+        }
+        $("#grid-wrapper .grid-item").mouseover(function() {
+            $(this).addClass("grid-item-hover");
+        });
+        
 }
 
-$("#grid-wrapper .grid-item").mouseover(function() {
-    $(this).addClass("grid-item-hover");
-});
+initializeGrid();
 
 document.querySelector("#clear").addEventListener("click", (e) => {
-    prompt("Set new grid size");
+    gridSize = prompt("Set new grid size");
+    initializeGrid();
 });
 
 /*$(".grid-item").one("mouseover", function() {
