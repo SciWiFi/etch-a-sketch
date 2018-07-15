@@ -9,9 +9,9 @@
 }
 
 .grid-item {
-    background-color: #aaaaaa;
+    background-color: #000000;
 }
 
 .grid-item-hover {
-    background-color: green;
+    background-color: black;
 }
